@@ -236,8 +236,10 @@ Rectangle {
 
             TableView {
                 id: tableView
-                x: 0
-                y: 200
+                x: 50
+                y: 120
+                width: 930
+                height: 640
                 columnWidthProvider: function (column) {
                     return 100
                 }

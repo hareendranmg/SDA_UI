@@ -10,50 +10,33 @@ Rectangle {
     width: 1000
     height: 800
     opacity: 1
-    color: "#00060606"
+    color: "#060606"
     border.color: "#003237b8"
 
-    Image {
-        id: image
+    Label {
+        id: configurationLabel
         x: 200
-        y: 86
-        width: 128
-        height: 2
-        source: "../assets/images/divider.png"
-        sourceSize.width: 120
-        sourceSize.height: 4
-    }
+        y: 60
+        width: 156
+        height: 27
+        color: "#ffffff"
+        text: qsTr("Configuration")
+        font.pointSize: 14
 
-    ComboBox {
-        id: comboBox
-        x: 49
-        y: 161
-        width: 250
-        height: 35
-        opacity: 0.658
-        visible: true
-    }
-
-    ComboBox {
-        id: comboBox1
-        x: 344
-        y: 159
-        width: 250
-        height: 35
-        opacity: 0.658
-    }
-
-    ComboBox {
-        id: comboBox2
-        x: 643
-        y: 159
-        width: 250
-        height: 35
-        opacity: 0.666
+        Image {
+            id: divider
+            x: 0
+            y: 25
+            width: 128
+            height: 2
+            source: "../assets/images/divider.png"
+            sourceSize.width: 120
+            sourceSize.height: 4
+        }
     }
 
     Text {
-        id: text3
+        id: port
         x: 52
         y: 141
         color: "#fffbfb"
@@ -61,10 +44,20 @@ Rectangle {
         font.pixelSize: 15
         font.italic: false
         font.bold: true
+
+        ComboBox {
+            id: portCombo
+            x: 0
+            y: 20
+            width: 250
+            height: 35
+            opacity: 0.7
+            visible: true
+        }
     }
 
     Text {
-        id: text4
+        id: baudRate
         x: 346
         y: 141
         width: 73
@@ -74,10 +67,19 @@ Rectangle {
         font.pixelSize: 15
         font.italic: false
         font.bold: true
+
+        ComboBox {
+            id: baudRateCombo
+            x: 0
+            y: 20
+            width: 250
+            height: 35
+            opacity: 0.7
+        }
     }
 
     Text {
-        id: text5
+        id: stopBit
         x: 646
         y: 141
         width: 58
@@ -87,28 +89,19 @@ Rectangle {
         font.pixelSize: 15
         font.bold: true
         font.italic: false
-    }
 
-    ComboBox {
-        id: comboBox3
-        x: 49
-        y: 250
-        width: 250
-        height: 35
-        opacity: 0.658
-    }
-
-    ComboBox {
-        id: comboBox4
-        x: 344
-        y: 250
-        width: 250
-        height: 35
-        opacity: 0.658
+        ComboBox {
+            id: stopBitCombo
+            x: 0
+            y: 20
+            width: 250
+            height: 35
+            opacity: 0.7
+        }
     }
 
     Text {
-        id: text6
+        id: flowControl
         x: 51
         y: 232
         color: "#fcfcfc"
@@ -116,19 +109,40 @@ Rectangle {
         font.pixelSize: 15
         font.italic: false
         font.bold: true
+
+        ComboBox {
+            id: flowControlCombo
+            x: 0
+            y: 20
+            width: 250
+            height: 35
+            opacity: 0.7
+        }
     }
 
     Text {
-        id: text7
-        x: 401
-        y: 344
-        text: qsTr("")
-        font.pixelSize: 12
+        id: databit
+        x: 350
+        y: 231
+        color: "#ffffff"
+        text: qsTr("Data Bit")
+        font.pixelSize: 15
+        font.italic: false
+        font.bold: true
+
+        ComboBox {
+            id: dataBitCombo
+            x: 0
+            y: 20
+            width: 250
+            height: 35
+            opacity: 0.7
+        }
     }
 
     Text {
-        id: text2
-        x: 348
+        id: periodicity
+        x: 646
         y: 232
         width: 77
         height: 17
@@ -137,25 +151,64 @@ Rectangle {
         font.pixelSize: 15
         font.italic: false
         font.bold: true
-    }
 
-    ComboBox {
-        id: comboBox5
-        x: 643
-        y: 250
-        width: 250
-        height: 35
-        opacity: 0.658
+        ComboBox {
+            id: periodicityCombo
+            x: 0
+            y: 20
+            width: 250
+            height: 35
+            opacity: 0.7
+        }
     }
 
     Text {
-        id: text8
-        x: 649
-        y: 231
-        color: "#ffffff"
-        text: qsTr("Data Bit")
+        id: configurationNameLabel
+        x: 52
+        y: 325
+        color: "#fcfcfc"
+        text: qsTr("Configuration Name")
         font.pixelSize: 15
         font.italic: false
         font.bold: true
+
+        Rectangle {
+            x: 0
+            y: 20
+            width: 547
+            height: 35
+            border.color: "black" // Set the border color
+            border.width: 1 // Set the border width
+
+            TextInput {
+                id: configurationNameInput
+                opacity: 0.7
+                visible: true
+                anchors.fill: parent
+                color: "#0b0b0b"
+                text: ""
+                font.pixelSize: 12
+                horizontalAlignment: Text.AlignLeft
+                verticalAlignment: Text.AlignVCenter
+                leftPadding: 12
+                anchors.bottomMargin: 0
+                anchors.leftMargin: 0
+                anchors.topMargin: 0
+                anchors.rightMargin: 0
+                clip: false
+            }
+        }
+    }
+
+    RoundButton {
+        id: roundButton
+        x: 646
+        y: 345
+        width: 250
+        height: 35
+        radius: 8
+        text: "Save Configuration"
+        highlighted: false
+        flat: false
     }
 }
