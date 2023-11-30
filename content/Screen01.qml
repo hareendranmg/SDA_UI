@@ -327,12 +327,583 @@ Rectangle {
             font.italic: false
             font.bold: true
         }
+
+        Rectangle {
+            id: createConfigurationRectangle
+            x: 260
+            y: 0
+            width: 1020
+            height: 800
+            opacity: 1
+            color: "#00000000"
+            border.color: "#00000000"
+
+            property var alertDialog
+
+            Connections {
+                target: configManager
+                function onShowAlertSignal(message, alertType) {
+                    showAlert(message, alertType)
+                }
+            }
+
+            Dialog {
+                id: alertDialog
+                parent: ApplicationWindow.overlay
+
+                x: (parent.width - width) / 2
+                y: (parent.height - height) / 2
+
+                height: 200
+                width: 400
+
+                focus: true
+                modal: true
+                title: ""
+
+                property alias text: messageText.text
+
+                Label {
+                    id: messageText
+
+                    verticalAlignment: Text.AlignVCenter
+                    horizontalAlignment: Text.AlignHCenter
+
+                    anchors.fill: parent
+                }
+
+                standardButtons: Dialog.Ok
+            }
+
+            // Function to show the alert dialog
+            function showAlert(message, alertType) {
+                alertDialog.text = message
+                console.log("alertType: " + alertType)
+                // Adjust title based on alertType
+                switch (alertType) {
+                case "success":
+                    alertDialog.title = "Success"
+                    break
+                case "warning":
+                    alertDialog.title = "Warning"
+                    break
+                case "error":
+                    alertDialog.title = "Error"
+                    break
+                default:
+                    alertDialog.title = ""
+                    break
+                }
+
+                alertDialog.open()
+            }
+
+            Image {
+                id: divider
+                x: 170
+                y: 94
+                width: 108
+                height: 2
+                source: "../assets/images/divider.png"
+                sourceSize.width: 120
+                sourceSize.height: 4
+            }
+
+            RoundButton {
+                x: 790
+                y: 56
+                width: 190
+                height: 35
+                radius: 8
+                text: "Go Back"
+                highlighted: false
+                flat: false
+                onClicked: {
+                    appNavigation.handleNavigationButtonClick(
+                                "goto_list_configurations")
+                }
+            }
+
+            Label {
+                id: createANewConfLabel
+                x: 50
+                y: 168
+                color: "#ffffff"
+                text: qsTr("Create a new configuration")
+                font.bold: true
+                font.pointSize: 16
+            }
+
+            Text {
+                id: port
+                x: 50
+                y: 210
+                color: "#fffbfb"
+                text: qsTr("Port")
+                font.pixelSize: 15
+                font.italic: false
+                font.bold: true
+
+                ComboBox {
+                    id: portCombo
+                    x: 0
+                    y: 20
+                    width: 150
+                    height: 35
+                    opacity: 1
+                    visible: true
+                    rightPadding: 0
+                    spacing: 0
+                    editable: false
+                    flat: false
+                    textRole: ""
+                    background: Rectangle {
+                        color: "#ffffff"
+                        x: 0
+                        y: 20
+                        radius: 6
+                        width: 250
+                        height: 35
+                        border.color: "#00000000"
+                        anchors.fill: parent
+                    }
+                    model: ListModel {
+                        ListElement {
+                            text: "PORT1 : RS485"
+                        }
+                        ListElement {
+                            text: "PORT2 : RS485"
+                        }
+                        ListElement {
+                            text: "PORT3 : RS422"
+                        }
+                        ListElement {
+                            text: "PORT4 : RS422"
+                        }
+                    }
+                }
+            }
+
+            Text {
+                id: baudRate
+                x: 220
+                y: 210
+                width: 77
+                height: 17
+                color: "#ffffff"
+                text: qsTr("Baud rate")
+                font.pixelSize: 15
+                font.italic: false
+                font.bold: true
+                Rectangle {
+                    x: 0
+                    y: 20
+                    width: 150
+                    height: 35
+                    radius: 6
+                    border.color: "#000000"
+                    border.width: 1
+                    TextInput {
+                        id: baudRateInput
+                        opacity: 0.7
+                        visible: true
+                        color: "#0b0b0b"
+                        text: "10000000"
+                        anchors.fill: parent
+                        font.pixelSize: 14
+                        horizontalAlignment: Text.AlignLeft
+                        verticalAlignment: Text.AlignVCenter
+                        font.weight: Font.Black
+                        leftPadding: 10
+                        font.bold: true
+                        MouseArea {
+                            anchors.fill: parent
+                            onClicked: {
+                                virtualKeyboard.visible = false
+                                virtualNumberKeyboard.visible = true
+                                virtualNumberKeyboard.inputField = baudRateInput
+                                periodicityInput1.focus = true // Set focus to the TextInput
+                            }
+                            drag.threshold: 8
+                        }
+                        clip: false
+                        anchors.topMargin: 0
+                        anchors.rightMargin: 0
+                        anchors.leftMargin: 0
+                        anchors.bottomMargin: 0
+                    }
+                }
+            }
+
+            Text {
+                id: databit
+                x: 390
+                y: 210
+                width: 60
+                color: "#ffffff"
+                text: qsTr("Data Bit")
+                font.pixelSize: 15
+                font.italic: false
+                font.bold: true
+
+                ComboBox {
+                    id: dataBitCombo
+                    x: 0
+                    y: 20
+                    width: 150
+                    height: 35
+                    opacity: 1
+                    currentIndex: 3
+                    background: Rectangle {
+                        color: "#ffffff"
+                        x: 0
+                        y: 20
+                        radius: 6
+                        width: 250
+                        height: 35
+                        border.color: "#00000000"
+                        anchors.fill: parent
+                    }
+
+                    model: ListModel {
+                        ListElement {
+                            text: "5"
+                        }
+                        ListElement {
+                            text: "6"
+                        }
+                        ListElement {
+                            text: "7"
+                        }
+                        ListElement {
+                            text: "8"
+                        }
+                    }
+                }
+            }
+
+            Text {
+                id: parity
+                x: 560
+                y: 210
+                width: 60
+                height: 17
+                color: "#ffffff"
+                text: qsTr("Parity")
+                font.pixelSize: 15
+                font.italic: false
+                font.bold: true
+                ComboBox {
+                    id: parityCombo
+                    x: 0
+                    y: 20
+                    width: 150
+                    height: 35
+                    opacity: 1
+                    model: ListModel {
+                        ListElement {
+                            text: "No Parity"
+                        }
+                        ListElement {
+                            text: "Even Parity"
+                        }
+                        ListElement {
+                            text: "Odd Parity"
+                        }
+                        ListElement {
+                            text: "Space Parity"
+                        }
+                        ListElement {
+                            text: "Mark Parity"
+                        }
+                    }
+                    background: Rectangle {
+                        x: 0
+                        y: 20
+                        width: 250
+                        height: 35
+                        color: "#ffffff"
+                        radius: 6
+                        border.color: "#00000000"
+                        anchors.fill: parent
+                    }
+                }
+            }
+
+            Text {
+                id: stopBit
+                x: 730
+                y: 210
+                width: 60
+                height: 17
+                color: "#ffffff"
+                text: qsTr("Stop Bit")
+                font.pixelSize: 15
+                font.bold: true
+                font.italic: false
+
+                ComboBox {
+                    id: stopBitCombo
+                    x: 0
+                    y: 19
+                    width: 150
+                    height: 35
+                    opacity: 1
+                    background: Rectangle {
+                        color: "#ffffff"
+                        x: 0
+                        y: 20
+                        radius: 6
+                        width: 250
+                        height: 35
+                        border.color: "#00000000"
+                        anchors.fill: parent
+                    }
+                    model: ListModel {
+                        ListElement {
+                            text: "1"
+                        }
+                        ListElement {
+                            text: "1.5"
+                        }
+                        ListElement {
+                            text: "2"
+                        }
+                    }
+                }
+            }
+
+            Text {
+                id: periodicity
+                x: 390
+                y: 290
+                width: 77
+                height: 17
+                color: "#ffffff"
+                text: qsTr("Periodicity (Ml.  S)")
+                font.pixelSize: 15
+                font.italic: false
+                font.bold: true
+
+                Rectangle {
+                    x: 0
+                    y: 20
+                    width: 150
+                    height: 35
+                    border.color: "black" // Set the border color
+                    border.width: 1 // Set the border width
+                    radius: 6
+
+                    TextInput {
+                        id: periodicityInput
+                        opacity: 0.7
+                        visible: true
+                        anchors.fill: parent
+                        color: "#0b0b0b"
+                        text: "20"
+                        font.pixelSize: 12
+                        horizontalAlignment: Text.AlignLeft
+                        verticalAlignment: Text.AlignVCenter
+                        anchors.bottomMargin: 0
+                        leftPadding: 10
+                        font.bold: true
+
+                        anchors.leftMargin: 0
+                        anchors.topMargin: 0
+                        anchors.rightMargin: 0
+                        clip: false
+
+                        MouseArea {
+                            anchors.fill: parent
+                            drag.threshold: 8
+                            onClicked: {
+                                virtualKeyboard.visible = false
+                                virtualNumberKeyboard.visible = true
+                                virtualNumberKeyboard.inputField = periodicityInput
+                                periodicityInput.focus = true // Set focus to the TextInput
+                            }
+                        }
+                    }
+                }
+            }
+
+            Text {
+                id: commandToSent
+                x: 50
+                y: 290
+                color: "#fcfcfc"
+                text: qsTr("Command")
+                font.pixelSize: 15
+                font.italic: false
+                font.bold: true
+
+                Rectangle {
+                    x: 0
+                    y: 20
+                    width: 150
+                    height: 35
+                    border.color: "black" // Set the border color
+                    border.width: 1 // Set the border width
+                    radius: 6
+
+                    TextInput {
+                        id: commandToSentInput
+                        opacity: 0.7
+                        visible: true
+                        anchors.fill: parent
+                        color: "#0b0b0b"
+                        text: ""
+                        font.pixelSize: 12
+                        horizontalAlignment: Text.AlignLeft
+                        verticalAlignment: Text.AlignVCenter
+                        anchors.bottomMargin: 0
+                        anchors.leftMargin: 0
+                        anchors.topMargin: 0
+                        anchors.rightMargin: 0
+                        clip: false
+                        leftPadding: 10
+                        font.bold: true
+                        MouseArea {
+                            anchors.fill: parent
+                            onClicked: {
+                                virtualNumberKeyboard.visible = false
+                                virtualKeyboard.visible = true
+                                virtualKeyboard.inputField = commandToSentInput
+                                commandToSentInput.focus = true // Set focus to the TextInput
+                            }
+                        }
+                    }
+                }
+            }
+
+            Text {
+                id: dataBytes
+                x: 220
+                y: 290
+                color: "#fcfcfc"
+                text: qsTr("Data Bytes")
+                font.pixelSize: 15
+                font.italic: false
+                font.bold: true
+
+                Rectangle {
+                    x: 0
+                    y: 20
+                    width: 150
+                    height: 35
+                    border.color: "black" // Set the border color
+                    border.width: 1 // Set the border width
+                    radius: 6
+
+                    TextInput {
+                        id: dataBytesInput
+                        opacity: 0.7
+                        visible: true
+                        anchors.fill: parent
+                        color: "#0b0b0b"
+                        text: ""
+                        font.pixelSize: 12
+                        horizontalAlignment: Text.AlignLeft
+                        verticalAlignment: Text.AlignVCenter
+                        anchors.bottomMargin: 0
+                        anchors.leftMargin: 0
+                        anchors.topMargin: 0
+                        anchors.rightMargin: 0
+                        clip: false
+                        leftPadding: 10
+                        font.bold: true
+                        MouseArea {
+                            anchors.fill: parent
+                            onClicked: {
+                                virtualNumberKeyboard.visible = false
+                                virtualKeyboard.visible = true
+                                virtualKeyboard.inputField = dataBytesInput
+                                dataBytesInput.focus = true // Set focus to the TextInput
+                            }
+                        }
+                    }
+                }
+            }
+
+            Text {
+                id: configurationName
+                x: 560
+                y: 290
+                color: "#fcfcfc"
+                text: qsTr("Configuration Name")
+                font.pixelSize: 15
+                font.italic: false
+                font.bold: true
+
+                Rectangle {
+                    x: 0
+                    y: 20
+                    width: 320
+                    height: 35
+                    border.color: "black" // Set the border color
+                    border.width: 1 // Set the border width
+                    radius: 6
+
+                    TextInput {
+                        id: configurationNameInput
+                        opacity: 0.7
+                        visible: true
+                        anchors.fill: parent
+                        color: "#0b0b0b"
+                        text: ""
+                        font.pixelSize: 12
+                        horizontalAlignment: Text.AlignLeft
+                        verticalAlignment: Text.AlignVCenter
+                        anchors.bottomMargin: 0
+                        anchors.leftMargin: 0
+                        anchors.topMargin: 0
+                        anchors.rightMargin: 0
+                        clip: false
+                        leftPadding: 10
+                        font.bold: true
+                        MouseArea {
+                            anchors.fill: parent
+                            anchors.rightMargin: 0
+                            onClicked: {
+                                virtualNumberKeyboard.visible = false
+                                virtualKeyboard.visible = true
+                                virtualKeyboard.inputField = configurationNameInput
+                                configurationNameInput.focus = true // Set focus to the TextInput
+                            }
+                        }
+                    }
+                }
+            }
+
+            RoundButton {
+                id: saveConfigurationButton
+                x: 660
+                y: 163
+                width: 270
+                height: 35
+                radius: 8
+                text: "Save Configuration"
+                highlighted: false
+                flat: false
+                onClicked: {
+                    // Emit the signal with the selected data
+                    configManager.insertItem(portCombo.currentText,
+                                             baudRateCombo.currentText,
+                                             stopBitCombo.currentText,
+                                             flowControlCombo.currentText,
+                                             dataBitCombo.currentText,
+                                             periodicityInput.text,
+                                             commandToSendInput.text,
+                                             configurationNameInput.text)
+                }
+            }
+        }
     }
 }
 
 /*##^##
 Designer {
-    D{i:0}D{i:1;invisible:true}
+    D{i:0}D{i:1;invisible:true}D{i:29}D{i:49}
 }
 ##^##*/
 
