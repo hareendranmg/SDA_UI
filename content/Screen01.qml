@@ -855,407 +855,17 @@ Rectangle {
             }
 
             Rectangle {
-                id: virtualKeyboard
-                x: 32
-                y: 819
-                visible: true
-                height: 220
-                width: 900
-                radius: 8
-
-                RoundButton {
-                    x: 8
-                    y: 6
-                    width: 74
-                    height: 39
-                    radius: 8
-                    text: "Q"
-                }
-
-                RoundButton {
-                    x: 89
-                    y: 6
-                    width: 74
-                    height: 40
-                    radius: 8
-                    text: "W"
-                }
-
-                RoundButton {
-                    x: 169
-                    y: 7
-                    width: 74
-                    height: 38
-                    radius: 8
-                    text: "E"
-                }
-
-                RoundButton {
-
-
-                    x: 776
-                    y: 52
-                    width: 117
-                    height: 40
-                    radius: 8
-                    text: qsTr("ENTER")
-                }
-
-                RoundButton {
-
-                    x: 696
-                    y: 52
-                    width: 74
-                    height: 40
-                    radius: 8
-                    text: "L"
-                }
-
-                RoundButton {
-
-                    x: 616
-                    y: 52
-                    width: 74
-                    height: 40
-                    radius: 8
-                    text: "K"
-                }
-
-                RoundButton {
-
-                    x: 249
-                    y: 6
-                    width: 74
-                    height: 40
-                    radius: 8
-                    text: "R"
-                }
-
-                RoundButton {
-                    id: roundButton3
-                    x: 331
-                    y: 6
-                    width: 74
-                    height: 40
-                    radius: 8
-                    text: "T"
-                }
-
-                RoundButton {
-
-                    x: 414
-                    y: 7
-                    width: 74
-                    height: 40
-                    radius: 8
-                    text: "Y"
-                }
-
-                RoundButton {
-
-                    x: 496
-                    y: 7
-                    width: 74
-                    height: 40
-                    radius: 8
-                    text: "U"
-                }
-
-                RoundButton {
-
-                    x: 578
-                    y: 7
-                    width: 74
-                    height: 40
-                    radius: 8
-                    text: "I"
-                }
-
-                RoundButton {
-
-                    x: 659
-                    y: 7
-                    width: 74
-                    height: 40
-                    radius: 8
-                    text: "O"
-                }
-
-                RoundButton {
-
-                    x: 740
-                    y: 7
-                    width: 74
-                    height: 40
-                    radius: 8
-                    text: "P"
-                }
-
-                RoundButton {
-                    x: 819
-                    y: 7
-                    width: 74
-                    height: 40
-                    radius: 8
-                    text: "DEL"
-                }
-
-                RoundButton {
-                    x: 534
-                    y: 52
-                    width: 74
-                    height: 40
-                    radius: 8
-                    text: "J"
-                }
-
-                RoundButton {
-                    x: 451
-                    y: 52
-                    width: 74
-                    height: 40
-                    radius: 8
-                    text: "H"
-                }
-
-                RoundButton {
-                    x: 367
-                    y: 52
-                    width: 74
-                    height: 40
-                    radius: 8
-                    text: "G"
-                }
-
-                RoundButton {
-                    x: 282
-                    y: 51
-                    width: 74
-                    height: 40
-                    radius: 8
-                    text: "F"
-                }
-
-                RoundButton {
-                    x: 200
-                    y: 51
-                    width: 74
-                    height: 40
-                    radius: 8
-                    text: "D"
-                }
-
-                RoundButton {
-                    x: 119
-                    y: 51
-                    width: 74
-                    height: 40
-                    radius: 8
-                    text: "S"
-                }
-
-                RoundButton {
-                    x: 36
-                    y: 50
-                    width: 74
-                    height: 40
-                    radius: 8
-                    text: "A"
-                }
-
-                RoundButton {
-                    x: 824
-                    y: 97
-                    width: 69
-                    height: 40
-                    radius: 8
-                    text: "SHIFT"
-                }
-
-                RoundButton {
-                    x: 751
-                    y: 97
-                    width: 69
-                    height: 40
-                    radius: 8
-                    text: "."
-                }
-
-                RoundButton {
-                    x: 678
-                    y: 97
-                    width: 69
-                    height: 40
-                    radius: 8
-                    text: "@"
-                }
-
-                RoundButton {
-                    x: 605
-                    y: 97
-                    width: 69
-                    height: 40
-                    radius: 8
-                    text: "+"
-                }
-
-                RoundButton {
-                    x: 532
-                    y: 97
-                    width: 69
-                    height: 40
-                    radius: 8
-                    text: "M"
-                }
-
-                RoundButton {
-                    x: 459
-                    y: 97
-                    width: 69
-                    height: 40
-                    radius: 8
-                    text: "N"
-                }
-
-                RoundButton {
-                    x: 384
-                    y: 97
-                    width: 69
-                    height: 40
-                    radius: 8
-                    text: "B"
-                }
-
-                RoundButton {
-                    x: 309
-                    y: 97
-                    width: 69
-                    height: 40
-                    radius: 8
-                    text: "V"
-                }
-
-                RoundButton {
-                    x: 233
-                    y: 97
-                    width: 69
-                    height: 40
-                    radius: 8
-                    text: "C"
-                }
-
-                RoundButton {
-                    x: 158
-                    y: 97
-                    width: 69
-                    height: 40
-                    radius: 8
-                    text: "X"
-                }
-
-                RoundButton {
-                    x: 83
-                    y: 97
-                    width: 69
-                    height: 40
-                    radius: 8
-                    text: "Z"
-                }
-
-                RoundButton {
-                    x: 8
-                    y: 97
-                    width: 69
-                    height: 40
-                    radius: 8
-                    text: "SHIFT"
-                }
-
-                RoundButton {
-                    x: 819
-                    y: 143
-                    width: 74
-                    height: 40
-                    radius: 8
-                    text: "+"
-                }
-
-                RoundButton {
-                    x: 739
-                    y: 143
-                    width: 74
-                    height: 40
-                    radius: 8
-                    text: "-"
-                }
-
-                RoundButton {
-                    x: 658
-                    y: 143
-                    width: 74
-                    height: 40
-                    radius: 8
-                    text: "_"
-                }
-
-                RoundButton {
-                    x: 8
-                    y: 142
-                    width: 74
-                    height: 40
-                    radius: 8
-                    text: "123"
-                }
-
-                RoundButton {
-                    x: 91
-                    y: 142
-                    width: 70
-                    height: 40
-                    radius: 8
-                    text: "+"
-                }
-
-                RoundButton {
-                    x: 171
-                    y: 142
-                    width: 70
-                    height: 40
-                    radius: 8
-                    text: "ALT"
-                }
-
-                RoundButton {
-                    x: 249
-                    y: 143
-                    width: 403
-                    height: 39
-                    radius: 8
-                    text: "SPACE"
-                }
-
-                //                RoundButton {
-                //                    x: 270
-                //                    y: 160
-                //                    width: 120
-                //                    height: 40
-                //                    radius: 8
-                //                    text: "\u2713"
-                //                }
-            }
-
-            Rectangle {
                 id: virtualKeyboard1
-                x: 32
-                y: 505
+                x: 50
+                y: 474
                 visible: true
-                height: 244
+                height: 260
                 width: 900
                 radius: 8
 
                 RoundButton {
                     x: 44
-                    y: 51
+                    y: 60
                     width: 74
                     height: 39
                     radius: 8
@@ -1264,7 +874,7 @@ Rectangle {
 
                 RoundButton {
                     x: 125
-                    y: 51
+                    y: 60
                     width: 74
                     height: 40
                     radius: 8
@@ -1273,7 +883,7 @@ Rectangle {
 
                 RoundButton {
                     x: 205
-                    y: 52
+                    y: 62
                     width: 74
                     height: 38
                     radius: 8
@@ -1281,17 +891,8 @@ Rectangle {
                 }
 
                 RoundButton {
-                    x: 776
-                    y: 97
-                    width: 117
-                    height: 40
-                    radius: 8
-                    text: qsTr("ENTER")
-                }
-
-                RoundButton {
-                    x: 696
-                    y: 97
+                    x: 743
+                    y: 110
                     width: 74
                     height: 40
                     radius: 8
@@ -1299,8 +900,8 @@ Rectangle {
                 }
 
                 RoundButton {
-                    x: 616
-                    y: 97
+                    x: 663
+                    y: 110
                     width: 74
                     height: 40
                     radius: 8
@@ -1309,7 +910,7 @@ Rectangle {
 
                 RoundButton {
                     x: 285
-                    y: 51
+                    y: 61
                     width: 74
                     height: 40
                     radius: 8
@@ -1318,7 +919,7 @@ Rectangle {
 
                 RoundButton {
                     x: 367
-                    y: 51
+                    y: 61
                     width: 74
                     height: 40
                     radius: 8
@@ -1327,7 +928,7 @@ Rectangle {
 
                 RoundButton {
                     x: 450
-                    y: 51
+                    y: 61
                     width: 74
                     height: 40
                     radius: 8
@@ -1336,7 +937,7 @@ Rectangle {
 
                 RoundButton {
                     x: 532
-                    y: 50
+                    y: 60
                     width: 74
                     height: 40
                     radius: 8
@@ -1345,7 +946,7 @@ Rectangle {
 
                 RoundButton {
                     x: 614
-                    y: 50
+                    y: 60
                     width: 74
                     height: 40
                     radius: 8
@@ -1354,7 +955,7 @@ Rectangle {
 
                 RoundButton {
                     x: 695
-                    y: 50
+                    y: 60
                     width: 74
                     height: 40
                     radius: 8
@@ -1363,7 +964,7 @@ Rectangle {
 
                 RoundButton {
                     x: 776
-                    y: 50
+                    y: 60
                     width: 74
                     height: 40
                     radius: 8
@@ -1372,16 +973,16 @@ Rectangle {
 
                 RoundButton {
                     x: 819
-                    y: 4
+                    y: 10
                     width: 74
                     height: 40
                     radius: 8
-                    text: "DEL"
+                    text: "Delete"
                 }
 
                 RoundButton {
-                    x: 534
-                    y: 97
+                    x: 581
+                    y: 110
                     width: 74
                     height: 40
                     radius: 8
@@ -1389,8 +990,8 @@ Rectangle {
                 }
 
                 RoundButton {
-                    x: 451
-                    y: 97
+                    x: 498
+                    y: 110
                     width: 74
                     height: 40
                     radius: 8
@@ -1398,8 +999,8 @@ Rectangle {
                 }
 
                 RoundButton {
-                    x: 367
-                    y: 97
+                    x: 414
+                    y: 110
                     width: 74
                     height: 40
                     radius: 8
@@ -1407,8 +1008,8 @@ Rectangle {
                 }
 
                 RoundButton {
-                    x: 282
-                    y: 96
+                    x: 330
+                    y: 110
                     width: 74
                     height: 40
                     radius: 8
@@ -1416,8 +1017,8 @@ Rectangle {
                 }
 
                 RoundButton {
-                    x: 200
-                    y: 96
+                    x: 247
+                    y: 110
                     width: 74
                     height: 40
                     radius: 8
@@ -1425,8 +1026,8 @@ Rectangle {
                 }
 
                 RoundButton {
-                    x: 119
-                    y: 96
+                    x: 166
+                    y: 110
                     width: 74
                     height: 40
                     radius: 8
@@ -1434,8 +1035,8 @@ Rectangle {
                 }
 
                 RoundButton {
-                    x: 36
-                    y: 95
+                    x: 86
+                    y: 110
                     width: 74
                     height: 40
                     radius: 8
@@ -1443,44 +1044,8 @@ Rectangle {
                 }
 
                 RoundButton {
-                    x: 824
-                    y: 145
-                    width: 69
-                    height: 40
-                    radius: 8
-                    text: "SHIFT"
-                }
-
-                RoundButton {
-                    x: 751
-                    y: 145
-                    width: 69
-                    height: 40
-                    radius: 8
-                    text: "."
-                }
-
-                RoundButton {
-                    x: 678
-                    y: 145
-                    width: 69
-                    height: 40
-                    radius: 8
-                    text: "@"
-                }
-
-                RoundButton {
-                    x: 605
-                    y: 145
-                    width: 69
-                    height: 40
-                    radius: 8
-                    text: "+"
-                }
-
-                RoundButton {
-                    x: 532
-                    y: 145
+                    x: 671
+                    y: 160
                     width: 69
                     height: 40
                     radius: 8
@@ -1488,8 +1053,8 @@ Rectangle {
                 }
 
                 RoundButton {
-                    x: 459
-                    y: 145
+                    x: 598
+                    y: 160
                     width: 69
                     height: 40
                     radius: 8
@@ -1497,8 +1062,8 @@ Rectangle {
                 }
 
                 RoundButton {
-                    x: 384
-                    y: 145
+                    x: 523
+                    y: 160
                     width: 69
                     height: 40
                     radius: 8
@@ -1506,8 +1071,8 @@ Rectangle {
                 }
 
                 RoundButton {
-                    x: 309
-                    y: 145
+                    x: 448
+                    y: 160
                     width: 69
                     height: 40
                     radius: 8
@@ -1516,8 +1081,8 @@ Rectangle {
 
                 RoundButton {
                     id: roundButton25
-                    x: 233
-                    y: 145
+                    x: 372
+                    y: 160
                     width: 69
                     height: 40
                     radius: 8
@@ -1525,8 +1090,8 @@ Rectangle {
                 }
 
                 RoundButton {
-                    x: 158
-                    y: 145
+                    x: 297
+                    y: 160
                     width: 69
                     height: 40
                     radius: 8
@@ -1534,8 +1099,8 @@ Rectangle {
                 }
 
                 RoundButton {
-                    x: 83
-                    y: 145
+                    x: 222
+                    y: 160
                     width: 69
                     height: 40
                     radius: 8
@@ -1543,44 +1108,26 @@ Rectangle {
                 }
 
                 RoundButton {
-                    x: 8
-                    y: 145
+                    x: 147
+                    y: 160
                     width: 69
                     height: 40
                     radius: 8
-                    text: "SHIFT"
+                    text: "Shift"
                 }
 
                 RoundButton {
-                    x: 819
-                    y: 191
-                    width: 74
+                    x: 673
+                    y: 210
+                    width: 67
                     height: 40
                     radius: 8
-                    text: "+"
+                    text: "\u2935"
                 }
 
                 RoundButton {
-                    x: 739
-                    y: 191
-                    width: 74
-                    height: 40
-                    radius: 8
-                    text: "-"
-                }
-
-                RoundButton {
-                    x: 658
-                    y: 191
-                    width: 74
-                    height: 40
-                    radius: 8
-                    text: "_"
-                }
-
-                RoundButton {
-                    x: 8
-                    y: 190
+                    x: 147
+                    y: 210
                     width: 74
                     height: 40
                     radius: 8
@@ -1588,46 +1135,18 @@ Rectangle {
                 }
 
                 RoundButton {
-                    x: 91
-                    y: 190
-                    width: 70
-                    height: 40
-                    radius: 8
-                    text: "+"
-                }
-
-                RoundButton {
-                    x: 171
-                    y: 190
-                    width: 70
-                    height: 40
-                    radius: 8
-                    text: "ALT"
-                }
-
-                RoundButton {
-                    x: 249
-                    y: 191
-                    width: 403
+                    x: 227
+                    y: 210
+                    width: 440
                     height: 39
                     radius: 8
-                    text: "SPACE"
+                    text: "Space"
                 }
 
                 RoundButton {
                     id: roundButton
                     x: 6
-                    y: 4
-                    width: 74
-                    height: 40
-                    radius: 8
-                    text: "0"
-                }
-
-                RoundButton {
-                    id: roundButton1
-                    x: 89
-                    y: 4
+                    y: 10
                     width: 74
                     height: 40
                     radius: 8
@@ -1635,19 +1154,19 @@ Rectangle {
                 }
 
                 RoundButton {
-                    id: roundButton2
-                    x: 168
-                    y: 5
-                    width: 74
+                    id: roundButton1
+                    x: 89
+                    y: 10
+                    width: 73
                     height: 40
                     radius: 8
                     text: "2"
                 }
 
                 RoundButton {
-                    id: roundButton4
-                    x: 248
-                    y: 6
+                    id: roundButton2
+                    x: 168
+                    y: 11
                     width: 74
                     height: 40
                     radius: 8
@@ -1655,9 +1174,9 @@ Rectangle {
                 }
 
                 RoundButton {
-                    id: roundButton5
-                    x: 331
-                    y: 4
+                    id: roundButton4
+                    x: 248
+                    y: 12
                     width: 74
                     height: 40
                     radius: 8
@@ -1665,9 +1184,9 @@ Rectangle {
                 }
 
                 RoundButton {
-                    id: roundButton6
-                    x: 414
-                    y: 5
+                    id: roundButton5
+                    x: 331
+                    y: 10
                     width: 74
                     height: 40
                     radius: 8
@@ -1675,9 +1194,9 @@ Rectangle {
                 }
 
                 RoundButton {
-                    id: roundButton7
-                    x: 496
-                    y: 4
+                    id: roundButton6
+                    x: 414
+                    y: 11
                     width: 74
                     height: 40
                     radius: 8
@@ -1685,9 +1204,9 @@ Rectangle {
                 }
 
                 RoundButton {
-                    id: roundButton8
-                    x: 578
-                    y: 5
+                    id: roundButton7
+                    x: 496
+                    y: 10
                     width: 74
                     height: 40
                     radius: 8
@@ -1695,9 +1214,9 @@ Rectangle {
                 }
 
                 RoundButton {
-                    id: roundButton9
-                    x: 658
-                    y: 4
+                    id: roundButton8
+                    x: 578
+                    y: 11
                     width: 74
                     height: 40
                     radius: 8
@@ -1705,13 +1224,23 @@ Rectangle {
                 }
 
                 RoundButton {
-                    id: roundButton10
-                    x: 739
-                    y: 2
-                    width: 73
+                    id: roundButton9
+                    x: 658
+                    y: 10
+                    width: 74
                     height: 40
                     radius: 8
                     text: "9"
+                }
+
+                RoundButton {
+                    id: roundButton10
+                    x: 739
+                    y: 8
+                    width: 73
+                    height: 40
+                    radius: 8
+                    text: "0"
                 }
 
                 //                RoundButton {
@@ -1729,7 +1258,7 @@ Rectangle {
 
 /*##^##
 Designer {
-    D{i:0}D{i:1;invisible:true}
+    D{i:0}D{i:1;invisible:true}D{i:22;invisible:true}D{i:29;invisible:true}
 }
 ##^##*/
 
