@@ -1,36 +1,28 @@
-// Copyright (C) 2021 The Qt Company Ltd.
-// SPDX-License-Identifier: LicenseRef-Qt-Commercial OR GPL-3.0-only
-
 import QtQuick 2.15
+import QtQuick.Controls 2.15
 import QtQuick.Window 2.15
-import SDA_UI 1.0
-import QtQuick.VirtualKeyboard 2.15
+import QtQuick.Layouts 1.15
 
-Window {
-    width: mainScreen.width
-    height: mainScreen.height
+Rectangle {
 
+    id: virtualKeyboard
     visible: true
-    title: "SDA_UI"
+    height: 200
+    width: 300
+    anchors.bottom: parent.bottom
 
-    Screen01 {
-        id: mainScreen
-    }
+    GridLayout {
+        id: keyboardGrid
+        columns: 3
 
-    InputPanel {
-        id: inputPanel
-        property bool showKeyboard :  active
-        y: showKeyboard ? parent.height - height : parent.height
-        Behavior on y {
-            NumberAnimation {
-                duration: 200
-                easing.type: Easing.InOutQuad
-            }
+            Button {
+                width: 80
+                height: 80
+                text: "1"
+                onClicked: {
+
+                }
+            
         }
-        anchors.leftMargin: Constants.width/10
-        anchors.rightMargin: Constants.width/10
-        anchors.left: parent.left
-        anchors.right: parent.right
     }
 }
-
