@@ -477,7 +477,7 @@ Rectangle {
 
             Label {
                 id: createANewConfLabel
-                x: 53
+                x: 50
                 y: 168
                 color: "#ffffff"
                 text: qsTr("Create a new configuration")
@@ -487,7 +487,7 @@ Rectangle {
 
             Text {
                 id: port
-                x: 53
+                x: 50
                 y: 207
                 color: "#fffbfb"
                 text: qsTr("Port")
@@ -616,7 +616,7 @@ Rectangle {
 
             Text {
                 id: stopBit
-                x: 679
+                x: 680
                 y: 207
                 width: 58
                 height: 17
@@ -660,7 +660,7 @@ Rectangle {
 
             Text {
                 id: flowControl
-                x: 52
+                x: 50
                 y: 300
                 color: "#fcfcfc"
                 text: qsTr("Flow Control")
@@ -751,8 +751,8 @@ Rectangle {
 
             Text {
                 id: periodicity
-                x: 675
-                y: 301
+                x: 680
+                y: 300
                 width: 77
                 height: 17
                 color: "#ffffff"
@@ -850,7 +850,7 @@ Rectangle {
 
             RoundButton {
                 id: saveConfigurationButton
-                x: 675
+                x: 680
                 y: 411
                 width: 270
                 height: 35
@@ -872,7 +872,7 @@ Rectangle {
 
             Text {
                 id: commandToSend
-                x: 52
+                x: 50
                 y: 392
                 color: "#fcfcfc"
                 text: qsTr("Command To Send")
@@ -917,110 +917,255 @@ Rectangle {
 
             Rectangle {
                 id: virtualKeyboard
-                x: 315
-                y: 480
+                x: 50
+                y: 551
                 visible: true
-                height: 210
-                width: 400
+                height: 190
+                width: 900
                 radius: 8
 
                 RoundButton {
-                    x: 10
-                    y: 10
-                    width: 120
-                    height: 40
+                    x: 730
+                    y: 8
+                    width: 50
+                    height: 30
                     radius: 8
                     text: "1"
                 }
 
                 RoundButton {
-                    x: 10
-                    y: 60
-                    width: 120
-                    height: 40
-                    radius: 8
-                    text: "4"
-                }
-
-                RoundButton {
-                    x: 10
-                    y: 110
-                    width: 120
-                    height: 40
-                    radius: 8
-                    text: "7"
-                }
-
-                RoundButton {
-                    x: 10
-                    y: 160
-                    width: 120
-                    height: 40
-                    radius: 8
-                    text: "⌫ "
-                }
-
-                RoundButton {
-                    x: 140
-                    y: 10
-                    width: 120
-                    height: 40
+                    x: 786
+                    y: 8
+                    width: 50
+                    height: 30
                     radius: 8
                     text: "2"
                 }
 
                 RoundButton {
-                    x: 140
-                    y: 60
-                    width: 120
-                    height: 40
-                    radius: 8
-                    text: "5"
-                }
-
-                RoundButton {
-                    x: 140
-                    y: 110
-                    width: 120
-                    height: 40
-                    radius: 8
-                    text: "8"
-                }
-
-                RoundButton {
-                    x: 140
-                    y: 160
-                    width: 120
-                    height: 40
-                    radius: 8
-                    text: "0"
-                }
-
-                RoundButton {
-                    x: 270
-                    y: 10
-                    width: 120
-                    height: 40
+                    x: 842
+                    y: 8
+                    width: 50
+                    height: 30
                     radius: 8
                     text: "3"
                 }
 
                 RoundButton {
-                    x: 270
-                    y: 60
-                    width: 120
-                    height: 40
+                    x: 730
+                    y: 44
+                    width: 50
+                    height: 30
+                    radius: 8
+                    text: "4"
+                }
+
+                RoundButton {
+                    x: 786
+                    y: 44
+                    width: 50
+                    height: 30
+                    radius: 8
+                    text: "5"
+                }
+
+                RoundButton {
+                    x: 842
+                    y: 44
+                    width: 50
+                    height: 30
                     radius: 8
                     text: "6"
                 }
 
                 RoundButton {
-                    x: 270
-                    y: 110
-                    width: 120
-                    height: 40
+                    x: 730
+                    y: 80
+                    width: 50
+                    height: 30
+                    radius: 8
+                    text: "7"
+                }
+
+                RoundButton {
+                    x: 786
+                    y: 80
+                    width: 50
+                    height: 30
+                    radius: 8
+                    text: "8"
+                }
+
+                RoundButton {
+                    x: 842
+                    y: 80
+                    width: 50
+                    height: 30
                     radius: 8
                     text: "9"
+                }
+
+                RoundButton {
+                    x: 730
+                    y: 116
+                    width: 50
+                    height: 30
+                    radius: 8
+                    text: "\u232b"
+                }
+
+                RoundButton {
+                    x: 786
+                    y: 116
+                    width: 50
+                    height: 30
+                    radius: 8
+                    text: "0"
+                }
+
+                RoundButton {
+                    x: 842
+                    y: 116
+                    width: 50
+                    height: 30
+                    radius: 8
+                    text: "."
+                }
+
+                RoundButton {
+                    x: 8
+                    y: 8
+                    width: 50
+                    height: 30
+                    radius: 8
+                    text: "~"
+                }
+
+                RoundButton {
+                    x: 64
+                    y: 8
+                    width: 50
+                    height: 30
+                    radius: 8
+                    text: "!"
+                }
+
+                RoundButton {
+                    x: 120
+                    y: 8
+                    width: 50
+                    height: 30
+                    radius: 8
+                    text: "@"
+                }
+
+                RoundButton {
+                    x: 8
+                    y: 44
+                    width: 50
+                    height: 30
+                    radius: 8
+                    text: "#"
+                }
+
+                RoundButton {
+                    x: 64
+                    y: 44
+                    width: 50
+                    height: 30
+                    radius: 8
+                    text: "$"
+                }
+
+                RoundButton {
+                    x: 120
+                    y: 44
+                    width: 50
+                    height: 30
+                    radius: 8
+                    text: "%"
+                }
+
+                RoundButton {
+                    x: 8
+                    y: 80
+                    width: 50
+                    height: 30
+                    radius: 8
+                    text: "^"
+                }
+
+                RoundButton {
+                    x: 64
+                    y: 80
+                    width: 50
+                    height: 30
+                    radius: 8
+                    text: "&&"
+                }
+
+                RoundButton {
+                    x: 120
+                    y: 80
+                    width: 50
+                    height: 30
+                    radius: 8
+                    text: "*"
+                    rotation: -0.707
+                }
+
+                RoundButton {
+                    x: 8
+                    y: 116
+                    width: 50
+                    height: 30
+                    radius: 8
+                    text: "("
+                }
+
+                RoundButton {
+                    x: 64
+                    y: 116
+                    width: 50
+                    height: 30
+                    radius: 8
+                    text: ")"
+                }
+
+                RoundButton {
+                    x: 120
+                    y: 116
+                    width: 50
+                    height: 30
+                    radius: 8
+                    text: "+"
+                }
+
+                RoundButton {
+                    x: 8
+                    y: 152
+                    width: 50
+                    height: 30
+                    radius: 8
+                    text: "-"
+                }
+
+                RoundButton {
+                    x: 64
+                    y: 152
+                    width: 50
+                    height: 30
+                    radius: 8
+                    text: "_"
+                }
+
+                RoundButton {
+                    x: 120
+                    y: 152
+                    width: 50
+                    height: 30
+                    radius: 8
+                    text: "="
                 }
 
                 //                RoundButton {
@@ -1031,27 +1176,6 @@ Rectangle {
                 //                    radius: 8
                 //                    text: "\u2713"
                 //                }
-                Rectangle {
-                    id: roundButton
-                    x: 270
-                    y: 160
-                    width: 120
-                    height: 40
-                    radius: 8
-                    color: "lightblue" // Set the default background color
-
-                    Text {
-                        anchors.centerIn: parent
-                        text: "\u2713"
-                    }
-
-                    MouseArea {
-                        onClicked: {
-                            // Handle button click
-                            console.log("Button clicked!")
-                        }
-                    }
-                }
             }
         }
     }

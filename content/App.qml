@@ -11,18 +11,39 @@ Rectangle {
     width: 300
     anchors.bottom: parent.bottom
 
-    GridLayout {
-        id: keyboardGrid
-        columns: 3
+    Row {
+                        spacing: 10 // You can adjust the spacing between Text elements as needed
 
-            Button {
-                width: 80
-                height: 80
-                text: "1"
-                onClicked: {
+                        Text {
+                            text: "id"
+                            // anchors.centerIn: parent
+                        }
 
-                }
-            
-        }
-    }
+                        Text {
+                            text: "dataReceived"
+                            // anchors.centerIn: parent
+                        }
+
+                        Text {
+                            text: "timeElapsed"
+                            // anchors.centerIn: parent
+                        }
+
+                        Text {
+                            text: "errorWords1"
+                            // anchors.centerIn: parent
+                        }
+
+                        Text {
+                            text: "errorWords2"
+                            // anchors.centerIn: parent
+                        }
+
+                        Text {
+                            text: "timestamp"
+                            // anchors.centerIn: parent
+                        }
+                    }
+
+
 }
