@@ -350,13 +350,10 @@ Rectangle {
             Dialog {
                 id: alertDialog
                 parent: ApplicationWindow.overlay
-
                 x: (parent.width - width) / 2
                 y: (parent.height - height) / 2
-
                 height: 200
                 width: 400
-
                 focus: true
                 modal: true
                 title: ""
@@ -409,6 +406,46 @@ Rectangle {
                 sourceSize.height: 4
             }
 
+            Rectangle {
+                x: 417
+                y: 163
+                width: 339
+                height: 35
+                border.color: "black" // Set the border color
+                border.width: 1 // Set the border width
+                radius: 6
+
+                TextArea {
+                    id: configurationNameInput
+                    opacity: 0.7
+                    visible: true
+                    anchors.fill: parent
+                    color: "#0b0b0b"
+                    text: ""
+                    font.pixelSize: 12
+                    horizontalAlignment: Text.AlignLeft
+                    verticalAlignment: Text.AlignVCenter
+                    placeholderText: "Configuration name"
+                    anchors.bottomMargin: 0
+                    anchors.leftMargin: 0
+                    anchors.topMargin: 0
+                    anchors.rightMargin: 0
+                    clip: false
+                    leftPadding: 10
+                    font.bold: true
+                    MouseArea {
+                        anchors.fill: parent
+                        anchors.rightMargin: 0
+                        onClicked: {
+                            virtualNumberKeyboard.visible = false
+                            virtualKeyboard.visible = true
+                            virtualKeyboard.inputField = configurationNameInput
+                            configurationNameInput.focus = true // Set focus to the TextInput
+                        }
+                    }
+                }
+            }
+
             RoundButton {
                 x: 790
                 y: 56
@@ -429,7 +466,7 @@ Rectangle {
                 x: 50
                 y: 168
                 color: "#ffffff"
-                text: qsTr("Create a new configuration")
+                text: qsTr("Create configuration")
                 font.bold: true
                 font.pointSize: 16
             }
@@ -437,7 +474,7 @@ Rectangle {
             Text {
                 id: port
                 x: 50
-                y: 210
+                y: 229
                 color: "#fffbfb"
                 text: qsTr("Port")
                 font.pixelSize: 15
@@ -448,7 +485,7 @@ Rectangle {
                     id: portCombo
                     x: 0
                     y: 20
-                    width: 150
+                    width: 155
                     height: 35
                     opacity: 1
                     visible: true
@@ -469,16 +506,16 @@ Rectangle {
                     }
                     model: ListModel {
                         ListElement {
-                            text: "PORT1 : RS485"
+                            text: "PORT1 - RS485"
                         }
                         ListElement {
-                            text: "PORT2 : RS485"
+                            text: "PORT2 - RS485"
                         }
                         ListElement {
-                            text: "PORT3 : RS422"
+                            text: "PORT3 - RS422"
                         }
                         ListElement {
-                            text: "PORT4 : RS422"
+                            text: "PORT4 - RS422"
                         }
                     }
                 }
@@ -486,8 +523,8 @@ Rectangle {
 
             Text {
                 id: baudRate
-                x: 220
-                y: 210
+                x: 233
+                y: 229
                 width: 77
                 height: 17
                 color: "#ffffff"
@@ -536,56 +573,9 @@ Rectangle {
             }
 
             Text {
-                id: databit
-                x: 390
-                y: 210
-                width: 60
-                color: "#ffffff"
-                text: qsTr("Data Bit")
-                font.pixelSize: 15
-                font.italic: false
-                font.bold: true
-
-                ComboBox {
-                    id: dataBitCombo
-                    x: 0
-                    y: 20
-                    width: 150
-                    height: 35
-                    opacity: 1
-                    currentIndex: 3
-                    background: Rectangle {
-                        color: "#ffffff"
-                        x: 0
-                        y: 20
-                        radius: 6
-                        width: 250
-                        height: 35
-                        border.color: "#00000000"
-                        anchors.fill: parent
-                    }
-
-                    model: ListModel {
-                        ListElement {
-                            text: "5"
-                        }
-                        ListElement {
-                            text: "6"
-                        }
-                        ListElement {
-                            text: "7"
-                        }
-                        ListElement {
-                            text: "8"
-                        }
-                    }
-                }
-            }
-
-            Text {
                 id: parity
-                x: 560
-                y: 210
+                x: 417
+                y: 229
                 width: 60
                 height: 17
                 color: "#ffffff"
@@ -631,9 +621,56 @@ Rectangle {
             }
 
             Text {
+                id: databit
+                x: 605
+                y: 229
+                width: 60
+                color: "#ffffff"
+                text: qsTr("Data Bit")
+                font.pixelSize: 15
+                font.italic: false
+                font.bold: true
+
+                ComboBox {
+                    id: dataBitCombo
+                    x: 0
+                    y: 20
+                    width: 150
+                    height: 35
+                    opacity: 1
+                    currentIndex: 3
+                    background: Rectangle {
+                        color: "#ffffff"
+                        x: 0
+                        y: 20
+                        radius: 6
+                        width: 250
+                        height: 35
+                        border.color: "#00000000"
+                        anchors.fill: parent
+                    }
+
+                    model: ListModel {
+                        ListElement {
+                            text: "5"
+                        }
+                        ListElement {
+                            text: "6"
+                        }
+                        ListElement {
+                            text: "7"
+                        }
+                        ListElement {
+                            text: "8"
+                        }
+                    }
+                }
+            }
+
+            Text {
                 id: stopBit
-                x: 730
-                y: 210
+                x: 790
+                y: 229
                 width: 60
                 height: 17
                 color: "#ffffff"
@@ -674,8 +711,196 @@ Rectangle {
             }
 
             Text {
+                id: flowControl
+                x: 50
+                y: 290
+                color: "#fffbfb"
+                text: qsTr("Flow Control")
+                font.pixelSize: 15
+                font.italic: false
+                font.bold: true
+                ComboBox {
+                    id: flowControlCombo
+                    x: 0
+                    y: 20
+                    width: 155
+                    height: 35
+                    opacity: 1
+                    visible: true
+                    currentIndex: 0
+                    textRole: ""
+                    spacing: 0
+                    rightPadding: 0
+                    model: ListModel {
+                        ListElement {
+                            text: "No Flow Control"
+                        }
+                        ListElement {
+                            text: "H/W Flow Control"
+                        }
+                        ListElement {
+                            text: "S/W Flow Control"
+                        }
+                    }
+                    flat: false
+                    editable: false
+                    background: Rectangle {
+                        x: 0
+                        y: 20
+                        width: 250
+                        height: 35
+                        color: "#ffffff"
+                        radius: 6
+                        border.color: "#00000000"
+                        anchors.fill: parent
+                    }
+                }
+            }
+
+            Text {
+                id: commandToSent
+                x: 233
+                y: 290
+                color: "#fcfcfc"
+                text: qsTr("Command")
+                font.pixelSize: 15
+                font.italic: false
+                font.bold: true
+
+                Rectangle {
+                    x: 0
+                    y: 20
+                    width: 150
+                    height: 35
+                    border.color: "black" // Set the border color
+                    border.width: 1 // Set the border width
+                    radius: 6
+
+                    TextInput {
+                        id: commandToSentInput
+                        opacity: 0.7
+                        visible: true
+                        anchors.fill: parent
+                        color: "#0b0b0b"
+                        text: ""
+                        font.pixelSize: 12
+                        horizontalAlignment: Text.AlignLeft
+                        verticalAlignment: Text.AlignVCenter
+                        anchors.bottomMargin: 0
+                        anchors.leftMargin: 0
+                        anchors.topMargin: 0
+                        anchors.rightMargin: 0
+                        clip: false
+                        leftPadding: 10
+                        font.bold: true
+                        MouseArea {
+                            anchors.fill: parent
+                            onClicked: {
+                                virtualNumberKeyboard.visible = false
+                                virtualKeyboard.visible = true
+                                virtualKeyboard.inputField = commandToSentInput
+                                commandToSentInput.focus = true // Set focus to the TextInput
+                            }
+                        }
+                    }
+                }
+            }
+
+            Text {
+                id: commandType
+                x: 417
+                y: 290
+                width: 60
+                color: "#ffffff"
+                text: qsTr("Type")
+                font.pixelSize: 15
+                font.italic: false
+                font.bold: true
+                ComboBox {
+                    id: commandTypeCombo
+                    x: 0
+                    y: 20
+                    width: 150
+                    height: 35
+                    opacity: 1
+                    model: ListModel {
+                        ListElement {
+                            text: "Hexa Decimal"
+                        }
+                        ListElement {
+                            text: "ASCII"
+                        }
+                        ListElement {
+                            text: "Binary"
+                        }
+                    }
+                    currentIndex: 0
+                    background: Rectangle {
+                        x: 0
+                        y: 20
+                        width: 250
+                        height: 35
+                        color: "#ffffff"
+                        radius: 6
+                        border.color: "#00000000"
+                        anchors.fill: parent
+                    }
+                }
+            }
+
+            Text {
+                id: dataBytes
+                x: 605
+                y: 290
+                color: "#fcfcfc"
+                text: qsTr("Data Bytes")
+                font.pixelSize: 15
+                font.italic: false
+                font.bold: true
+
+                Rectangle {
+                    x: 0
+                    y: 20
+                    width: 150
+                    height: 35
+                    border.color: "black" // Set the border color
+                    border.width: 1 // Set the border width
+                    radius: 6
+
+                    TextInput {
+                        id: dataBytesInput
+                        opacity: 0.7
+                        visible: true
+                        anchors.fill: parent
+                        color: "#0b0b0b"
+                        text: ""
+                        font.pixelSize: 12
+                        horizontalAlignment: Text.AlignLeft
+                        verticalAlignment: Text.AlignVCenter
+                        inputMask: ""
+                        anchors.bottomMargin: 0
+                        anchors.leftMargin: 0
+                        anchors.topMargin: 0
+                        anchors.rightMargin: 0
+                        clip: false
+                        leftPadding: 10
+                        font.bold: true
+                        MouseArea {
+                            anchors.fill: parent
+                            onClicked: {
+                                virtualKeyboard.visible = false
+                                virtualNumberKeyboard.visible = true
+                                virtualNumberKeyboard.inputField = dataBytesInput
+                                dataBytesInput.focus = true // Set focus to the TextInput
+                            }
+                        }
+                    }
+                }
+            }
+
+            Text {
                 id: periodicity
-                x: 390
+                x: 790
                 y: 290
                 width: 77
                 height: 17
@@ -727,174 +952,44 @@ Rectangle {
                 }
             }
 
-            Text {
-                id: commandToSent
-                x: 50
-                y: 290
-                color: "#fcfcfc"
-                text: qsTr("Command")
-                font.pixelSize: 15
-                font.italic: false
-                font.bold: true
-
-                Rectangle {
-                    x: 0
-                    y: 20
-                    width: 150
-                    height: 35
-                    border.color: "black" // Set the border color
-                    border.width: 1 // Set the border width
-                    radius: 6
-
-                    TextInput {
-                        id: commandToSentInput
-                        opacity: 0.7
-                        visible: true
-                        anchors.fill: parent
-                        color: "#0b0b0b"
-                        text: ""
-                        font.pixelSize: 12
-                        horizontalAlignment: Text.AlignLeft
-                        verticalAlignment: Text.AlignVCenter
-                        anchors.bottomMargin: 0
-                        anchors.leftMargin: 0
-                        anchors.topMargin: 0
-                        anchors.rightMargin: 0
-                        clip: false
-                        leftPadding: 10
-                        font.bold: true
-                        MouseArea {
-                            anchors.fill: parent
-                            onClicked: {
-                                virtualNumberKeyboard.visible = false
-                                virtualKeyboard.visible = true
-                                virtualKeyboard.inputField = commandToSentInput
-                                commandToSentInput.focus = true // Set focus to the TextInput
-                            }
-                        }
-                    }
-                }
-            }
-
-            Text {
-                id: dataBytes
-                x: 220
-                y: 290
-                color: "#fcfcfc"
-                text: qsTr("Data Bytes")
-                font.pixelSize: 15
-                font.italic: false
-                font.bold: true
-
-                Rectangle {
-                    x: 0
-                    y: 20
-                    width: 150
-                    height: 35
-                    border.color: "black" // Set the border color
-                    border.width: 1 // Set the border width
-                    radius: 6
-
-                    TextInput {
-                        id: dataBytesInput
-                        opacity: 0.7
-                        visible: true
-                        anchors.fill: parent
-                        color: "#0b0b0b"
-                        text: ""
-                        font.pixelSize: 12
-                        horizontalAlignment: Text.AlignLeft
-                        verticalAlignment: Text.AlignVCenter
-                        anchors.bottomMargin: 0
-                        anchors.leftMargin: 0
-                        anchors.topMargin: 0
-                        anchors.rightMargin: 0
-                        clip: false
-                        leftPadding: 10
-                        font.bold: true
-                        MouseArea {
-                            anchors.fill: parent
-                            onClicked: {
-                                virtualNumberKeyboard.visible = false
-                                virtualKeyboard.visible = true
-                                virtualKeyboard.inputField = dataBytesInput
-                                dataBytesInput.focus = true // Set focus to the TextInput
-                            }
-                        }
-                    }
-                }
-            }
-
-            Text {
-                id: configurationName
-                x: 560
-                y: 290
-                color: "#fcfcfc"
-                text: qsTr("Configuration Name")
-                font.pixelSize: 15
-                font.italic: false
-                font.bold: true
-
-                Rectangle {
-                    x: 0
-                    y: 20
-                    width: 320
-                    height: 35
-                    border.color: "black" // Set the border color
-                    border.width: 1 // Set the border width
-                    radius: 6
-
-                    TextInput {
-                        id: configurationNameInput
-                        opacity: 0.7
-                        visible: true
-                        anchors.fill: parent
-                        color: "#0b0b0b"
-                        text: ""
-                        font.pixelSize: 12
-                        horizontalAlignment: Text.AlignLeft
-                        verticalAlignment: Text.AlignVCenter
-                        anchors.bottomMargin: 0
-                        anchors.leftMargin: 0
-                        anchors.topMargin: 0
-                        anchors.rightMargin: 0
-                        clip: false
-                        leftPadding: 10
-                        font.bold: true
-                        MouseArea {
-                            anchors.fill: parent
-                            anchors.rightMargin: 0
-                            onClicked: {
-                                virtualNumberKeyboard.visible = false
-                                virtualKeyboard.visible = true
-                                virtualKeyboard.inputField = configurationNameInput
-                                configurationNameInput.focus = true // Set focus to the TextInput
-                            }
-                        }
-                    }
-                }
-            }
-
             RoundButton {
                 id: saveConfigurationButton
-                x: 660
+                x: 790
                 y: 163
-                width: 270
+                width: 150
                 height: 35
                 radius: 8
-                text: "Save Configuration"
+                text: "Save"
                 highlighted: false
                 flat: false
                 onClicked: {
                     // Emit the signal with the selected data
-                    configManager.insertItem(portCombo.currentText,
-                                             baudRateCombo.currentText,
-                                             stopBitCombo.currentText,
-                                             flowControlCombo.currentText,
-                                             dataBitCombo.currentText,
-                                             periodicityInput.text,
-                                             commandToSendInput.text,
-                                             configurationNameInput.text)
+                    var insertResponse = configManager.insertItem(
+                                portCombo.currentIndex, baudRateInput.text,
+                                dataBitCombo.currentIndex,
+                                parityCombo.currentIndex,
+                                stopBitCombo.currentIndex,
+                                commandToSentInput.text, dataBytesInput.text,
+                                periodicityInput.text,
+                                configurationNameInput.text)
+
+                    if (insertResponse) {
+                        portCombo.currentIndex = 0
+                        baudRateInput.text = ""
+                        dataBitCombo.currentIndex = 3
+                        parityCombo.currentIndex = 0
+                        stopBitCombo.currentIndex = 0
+                        commandToSentInput.text = ""
+                        dataBytesInput.text = ""
+                        periodicityInput.text = ""
+                        configurationNameInput.text = ""
+
+                        showAlert("Configuration saved successfully", "success")
+                        alertDialog.accepted.connect(function () {
+                            appNavigation.handleNavigationButtonClick(
+                                        "goto_dashboard")
+                        })
+                    }
                 }
             }
         }
@@ -903,7 +998,7 @@ Rectangle {
 
 /*##^##
 Designer {
-    D{i:0}D{i:1;invisible:true}D{i:29}D{i:49}
+    D{i:0}D{i:1;invisible:true}
 }
 ##^##*/
 
