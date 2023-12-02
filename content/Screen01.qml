@@ -11,212 +11,6 @@ Rectangle {
     visible: true
 
     Image {
-        id: backgroundImage1
-        anchors.fill: parent
-        source: "../background_image.png"
-        sourceSize.width: 1280
-        anchors.rightMargin: 0
-        anchors.bottomMargin: 0
-        anchors.leftMargin: 0
-        anchors.topMargin: 0
-        fillMode: Image.Stretch
-
-        Label {
-            id: tachlogLabel
-            x: 110
-            y: 55
-            width: 130
-            height: 30
-            color: "#ffffff"
-            text: qsTr("Tachlog")
-            font.weight: Font.Bold
-            font.pointSize: 16
-        }
-
-        Label {
-            id: conceptsRedifinedLabel
-            x: 110
-            y: 80
-            width: 130
-            height: 30
-            color: "#ffffff"
-            text: qsTr("Concepts Redefined")
-            font.weight: Font.Medium
-            font.pointSize: 10
-        }
-
-        Label {
-            id: serialDataLabel
-            x: 54
-            y: 142
-            color: "#ffffff"
-            text: qsTr("SERIAL DATA")
-            font.pointSize: 12
-        }
-
-        Label {
-            id: acquisitionLabel
-            x: 80
-            y: 160
-            color: "#ffffff"
-            text: qsTr("ACQUISITION")
-            font.pointSize: 12
-        }
-
-        RoundButton {
-            id: dashboardButton
-            x: 30
-            y: 200
-            icon.source: "qrc:/assets/images/dashboard_icon.png"
-            width: 200
-            height: 46
-            radius: 12
-            text: qsTr("Dashboard")
-            highlighted: false
-            flat: false
-            icon.width: 22
-            font.weight: Font.Medium
-            font.italic: false
-            font.bold: true
-            font.pointSize: 13
-            onClicked: {
-                sidebarActions.handleSidebarButton('dashboard')
-            }
-        }
-
-        RoundButton {
-            id: configurationButton
-            x: 30
-            y: 260
-            icon.source: "qrc:/assets/images/configuration_icon.png"
-            icon.color: "#00000000"
-            width: 200
-            height: 46
-            radius: 12
-            text: qsTr("Configuration")
-            icon.width: 22
-            font.weight: Font.Medium
-            font.pointSize: 13
-            font.italic: false
-            font.bold: true
-            onClicked: {
-                sidebarActions.handleSidebarButton('list_configurations')
-            }
-        }
-
-        RoundButton {
-            id: dataLogsButton
-            x: 30
-            y: 320
-            icon.source: "qrc:/assets/images/data_logs_icon.png"
-            icon.color: "#00000000"
-            icon.width: 22
-            width: 200
-            height: 46
-            radius: 12
-            text: qsTr("Data Logs")
-            font.weight: Font.Medium
-            font.pointSize: 13
-            font.italic: false
-            font.bold: true
-            onClicked: {
-                sidebarActions.handleSidebarButton(dataLogsButton.text)
-            }
-        }
-
-        RoundButton {
-            id: storageButton
-            x: 30
-            y: 380
-            icon.source: "qrc:/assets/images/storage_icon.png"
-            icon.color: "#00000000"
-            icon.width: 22
-            width: 200
-            height: 46
-            radius: 12
-            text: qsTr("Storage")
-            font.weight: Font.Medium
-            font.pointSize: 13
-            font.italic: false
-            font.bold: true
-            onClicked: {
-                sidebarActions.handleSidebarButton(storageButton.text)
-            }
-        }
-
-        RoundButton {
-            id: settingsButton
-            x: 30
-            y: 440
-            icon.source: "qrc:/assets/images/settings_icon.png"
-            icon.color: "#00000000"
-            icon.width: 22
-            width: 200
-            height: 46
-            radius: 12
-            text: qsTr("Settings")
-            font.weight: Font.Medium
-            font.pointSize: 13
-            font.italic: false
-            font.bold: true
-            onClicked: {
-                sidebarActions.handleSidebarButton(settingsButton.text)
-            }
-        }
-
-        Label {
-            id: dashboardIndicator
-            x: 330
-            y: 60
-            color: "#ffffff"
-            text: qsTr("Dashboard")
-            font.pointSize: 14
-        }
-
-        Label {
-            id: configurationIndicator
-            x: 480
-            y: 60
-            color: "#ffffff"
-            text: qsTr("Configuration")
-            font.pointSize: 14
-        }
-
-        Label {
-            id: dataLogsIndicator
-            x: 660
-            y: 60
-            width: 156
-            height: 27
-            color: "#ffffff"
-            text: qsTr("Data Logs")
-            font.pointSize: 14
-        }
-
-        Label {
-            id: storageIndicator
-            x: 794
-            y: 60
-            width: 109
-            height: 27
-            color: "#ffffff"
-            text: qsTr("Storage")
-            font.pointSize: 14
-        }
-
-        Label {
-            id: settingsIndicator
-            x: 915
-            y: 60
-            width: 156
-            height: 27
-            color: "#ffffff"
-            text: qsTr("Settings")
-            font.pointSize: 14
-        }
-    }
-
-    Image {
         id: backgroundImage
         anchors.fill: parent
         source: "../background_image.jpg"
@@ -337,6 +131,7 @@ Rectangle {
             opacity: 1
             color: "#00000000"
             border.color: "#00000000"
+            visible: false
 
             property var alertDialog
 
@@ -447,6 +242,7 @@ Rectangle {
             }
 
             RoundButton {
+                id: backButton
                 x: 790
                 y: 56
                 width: 190
@@ -993,12 +789,233 @@ Rectangle {
                 }
             }
         }
+
+        Rectangle {
+            id: dashboardRectangle
+            x: 260
+            y: 0
+            width: 1020
+            height: 800
+            opacity: 1
+            color: "#00000000"
+            border.color: "#00000000"
+            Connections {
+                target: configManager
+            }
+
+            Image {
+                id: dashboardDivider
+                x: 46
+                y: 94
+                width: 90
+                height: 2
+                source: "../assets/images/divider.png"
+                sourceSize.width: 120
+                sourceSize.height: 4
+            }
+
+            Label {
+                id: configurationSelectLabel
+                x: 50
+                y: 180
+                width: 100
+                color: "#ffffff"
+                text: qsTr("Configuration")
+                font.pointSize: 12
+            }
+
+            Rectangle {
+                id: configurationComboRectangle
+                x: 50
+                y: 210
+                width: 671
+                height: 36
+                color: "#e4e7fb"
+                radius: 8
+                clip: false
+
+                ComboBox {
+                    id: configurationCombo
+                    anchors.fill: parent
+                    flat: true
+                    currentIndex: -1
+                    displayText: currentIndex === -1 ? "Please select which configuration file to be run" : currentText
+                    model: dashHandler.configurations()
+                    onCurrentIndexChanged: {
+                        dashHandler.configBoxHandle(model[currentIndex])
+                    }
+                }
+            }
+
+            RoundButton {
+                id: connectButton
+                x: 750
+                y: 210
+                width: 200
+                height: 36
+                radius: 8
+                text: "<font color='#fefefe'> Connect </font>"
+                background: Rectangle {
+                    radius: 8
+                    color: "#3f127e"
+                }
+                onClicked: {
+                    dashHandler.connectPort()
+                    // dashHandler.serialReceive()
+                }
+            }
+
+            Rectangle {
+                width: 900
+                height: 420
+                x: 50
+                y: 300
+                color: "#0a0d2c"
+                radius: 12
+
+                Rectangle {
+                    id: startedAtRectangle
+                    x: 30
+                    y: 30
+                    width: 405
+                    height: 165
+                    color: "#e4e7fb"
+                    radius: 12
+
+                    Label {
+                        id: startedAtLabel
+                        x: 30
+                        y: 30
+                        text: qsTr("Started at")
+                        font.pointSize: 14
+                    }
+
+                    Label {
+                        id: startedAtTime
+                        x: 40
+                        y: 80
+                        color: "#0a0d2c"
+                        text: qsTr("Not Yet  Started")
+                        font.pointSize: 16
+                    }
+                }
+
+                Rectangle {
+                    id: errorsRectangle
+                    x: 30
+                    y: 225
+                    width: 405
+                    height: 165
+                    color: "#e4e7fb"
+                    radius: 12
+
+                    Label {
+                        id: errorsLabel
+                        x: 30
+                        y: 30
+                        text: qsTr("Errors")
+                        font.pointSize: 14
+                    }
+
+                    Label {
+                        id: errorCount
+                        x: 40
+                        y: 80
+                        color: "#0a0d2c"
+                        text: qsTr("0")
+                        font.pointSize: 16
+                    }
+                }
+
+                Rectangle {
+                    id: loggingForRectangle
+                    x: 465
+                    y: 30
+                    width: 405
+                    height: 165
+                    color: "#e4e7fb"
+                    radius: 12
+
+                    Label {
+                        id: loggingForLabel
+                        x: 30
+                        y: 30
+                        text: qsTr("Logging for")
+                        font.pointSize: 14
+                    }
+
+                    Label {
+                        id: hourLabel
+                        x: 41
+                        y: 70
+                        color: "#0a0d2c"
+                        text: qsTr("Hours")
+                        font.pointSize: 12
+                    }
+
+                    Label {
+                        id: minuteLabel
+                        x: 96
+                        y: 70
+                        color: "#0a0d2c"
+                        text: qsTr("Minutes")
+                        font.pointSize: 12
+                    }
+
+                    Label {
+                        id: secondsLabel
+                        x: 164
+                        y: 70
+                        color: "#0a0d2c"
+                        text: qsTr("Seconds")
+                        font.pointSize: 12
+                    }
+
+                    Label {
+                        id: loggingTime
+                        x: 42
+                        y: 89
+                        width: 242
+                        height: 41
+                        text: qsTr("00 : 00 : 00")
+                        font.pointSize: 26
+                    }
+                }
+
+                Rectangle {
+                    id: filenameRectangle
+                    x: 465
+                    y: 225
+                    width: 405
+                    height: 165
+                    color: "#e4e7fb"
+                    radius: 12
+
+                    Label {
+                        id: filenameLabel
+                        x: 30
+                        y: 30
+                        text: qsTr("File Name")
+                        font.pointSize: 14
+                    }
+
+                    Label {
+                        id: fileName
+                        x: 40
+                        y: 80
+                        color: "#0a0d2c"
+                        text: qsTr("Not Yet Started")
+                        font.pointSize: 16
+                    }
+                }
+            }
+        }
     }
 }
 
 /*##^##
 Designer {
-    D{i:0}D{i:1;invisible:true}
+    D{i:0}D{i:7;invisible:true}D{i:80}D{i:91}D{i:92}D{i:98}D{i:103}D{i:104}
 }
 ##^##*/
 
