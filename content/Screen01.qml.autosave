@@ -629,30 +629,7 @@ Rectangle {
             }
         }
 
-        Dialog {
-            id: alertDialog
-            parent: ApplicationWindow.overlay
-            x: (parent.width - width) / 2
-            y: (parent.height - height) / 2
-            height: 200
-            width: 400
-            focus: true
-            modal: true
-            title: ""
 
-            property alias text: messageText.text
-
-            Label {
-                id: messageText
-
-                verticalAlignment: Text.AlignVCenter
-                horizontalAlignment: Text.AlignHCenter
-
-                anchors.fill: parent
-            }
-
-            standardButtons: Dialog.Ok
-        }
 
         // Function to show the alert dialog
         function showAlert(message, alertType) {
@@ -771,14 +748,7 @@ Rectangle {
             icon.cache: false
         }
 
-        Label {
-            id: dataDumpLabel
-            x: 50
-            y: 380
-            color: "#ffffff"
-            text: qsTr("Data Dump")
-            font.pointSize: 12
-        }
+
 
         Rectangle {
             id: dataDumpRectangle
