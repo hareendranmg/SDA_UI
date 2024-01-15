@@ -36,7 +36,7 @@ Rectangle {
             icon.source: "qrc:/assets/images/dashboard_icon.png"
             highlighted: false
             font.weight: Font.Medium
-            font.pointSize: 12
+            font.pointSize: 13
             font.italic: false
             font.bold: true
             flat: false
@@ -120,21 +120,6 @@ Rectangle {
             font.pointSize: 13
             font.italic: false
             font.bold: true
-        }
-
-        RoundButton {
-            id: roundButton
-            x: 30
-            y: 535
-            width: 200
-            height: 46
-            radius: 12
-            text: qsTr("Network Settings")
-            display: AbstractButton.TextUnderIcon
-            font.pointSize: 13
-            font.italic: false
-            font.bold: true
-            font.weight: Font.Medium
         }
     }
 
@@ -235,9 +220,83 @@ Rectangle {
             x: 50
             y: 168
             color: "#ffffff"
-            text: qsTr("Network Settings")
+            text: qsTr("Data Dump")
             font.bold: true
             font.pointSize: 16
+        }
+
+        Rectangle {
+            x: 417
+            y: 163
+            width: 339
+            height: 35
+            border.color: "black" // Set the border color
+            border.width: 1 // Set the border width
+            radius: 6
+            clip: true
+
+            TextArea {
+                id: fileNameInput
+                opacity: 0.7
+                visible: true
+                anchors.fill: parent
+                color: "#0b0b0b"
+                text: ""
+                font.pixelSize: 12
+                horizontalAlignment: Text.AlignLeft
+                verticalAlignment: Text.AlignVCenter
+                placeholderText: "File Name"
+                anchors.bottomMargin: 0
+                anchors.leftMargin: 0
+                anchors.topMargin: 0
+                anchors.rightMargin: 0
+                clip: true
+                leftPadding: 10
+                font.bold: true
+                MouseArea {
+                    clip: true
+                    anchors.fill: parent
+                    anchors.rightMargin: 0
+                    onClicked: {
+                        virtualNumberKeyboard.visible = false
+                        virtualKeyboard.visible = true
+                        virtualKeyboard.inputField = fileNameInput
+                        fileNameInput.focus = true // Set focus to the TextInput
+                    }
+                }
+            }
+        }
+
+        RoundButton {
+            id: dataDumpButton
+            x: 790
+            y: 163
+            width: 150
+            height: 35
+            radius: 8
+            text: "Start"
+            highlighted: false
+            flat: false
+            onClicked: {
+                // Emit the signal with the selected data
+                var insertResponse = configManager.insertItem(
+                            portCombo.currentIndex, baudRateInput.text,
+                            parityCombo.currentIndex,
+                            dataBitCombo.currentIndex,
+                            stopBitCombo.currentIndex,
+                            flowControlCombo.currentIndex,
+                            commandToSentInput.text,
+                            commandTypeCombo.currentIndex, dataBytesInput.text,
+                            periodicityInput.text, fileNameInput.text)
+
+                if (insertResponse) {
+                    showAlert("Configuration saved successfully", "success")
+                    alertDialog.accepted.connect(function () {
+                        appNavigation.handleNavigationButtonClick(
+                                    "goto_dashboard")
+                    })
+                }
+            }
         }
 
         Text {
@@ -302,11 +361,49 @@ Rectangle {
             font.pixelSize: 15
             font.italic: false
             font.bold: true
+            Rectangle {
+                x: 0
+                y: 20
+                width: 150
+                height: 35
+                radius: 6
+                border.color: "#000000"
+                border.width: 1
+                TextInput {
+                    id: baudRateInput
+                    opacity: 0.7
+                    visible: true
+                    color: "#0b0b0b"
+                    text: "20000000"
+                    anchors.fill: parent
+                    font.pixelSize: 14
+                    horizontalAlignment: Text.AlignLeft
+                    verticalAlignment: Text.AlignVCenter
+                    font.weight: Font.Black
+                    leftPadding: 10
+                    font.bold: true
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                            virtualKeyboard.visible = false
+                            virtualNumberKeyboard.visible = true
+                            virtualNumberKeyboard.inputField = baudRateInput
+                            periodicityInput1.focus = true // Set focus to the TextInput
+                        }
+                        drag.threshold: 8
+                    }
+                    clip: false
+                    anchors.topMargin: 0
+                    anchors.rightMargin: 0
+                    anchors.leftMargin: 0
+                    anchors.bottomMargin: 0
+                }
+            }
         }
 
         Text {
             id: parity
-            x: 366
+            x: 417
             y: 230
             width: 60
             height: 17
@@ -401,12 +498,12 @@ Rectangle {
 
         Text {
             id: stopBit
-            x: 684
+            x: 790
             y: 230
             width: 60
             height: 17
             color: "#ffffff"
-            text: qsTr("Default Gateway")
+            text: qsTr("Stop Bit")
             font.pixelSize: 15
             font.bold: true
             font.italic: false
@@ -618,59 +715,69 @@ Rectangle {
             sourceSize.height: 4
         }
 
-        Text {
-            id: text1
+        Label {
+            id: dataLogFileNameLabel
             x: 50
-            y: 324
-            color: "#f8f8f8"
-            text: qsTr("DNS")
-            font.pixelSize: 15
-            font.bold: true
+            y: 180
+            color: "#ffffff"
+            text: qsTr("External Device")
+            font.pointSize: 12
         }
 
-        TextField {
-            id: textField
+        Rectangle {
+            id: dataLogFileNameRectangle
             x: 50
-            y: 251
-            width: 277
-            height: 35
-            placeholderText: qsTr("Text Field")
+            y: 210
+            width: 890
+            height: 36
+            color: "lightgray"
+            radius: 8
+            clip: false
+
+            ComboBox {
+                id: listExternalDevice
+                anchors.fill: parent
+                //placeholderText: "Please select the device"
+                onCurrentIndexChanged: {
+                    logsHandler.onExternalDeviceChanged(model[currentIndex])
+                }
+                model: logsHandler.externalDevices()
+                flat: true
+                currentIndex: -1
+                displayText: currentIndex === -1 ? "Please select the device" : currentText
+            }
         }
 
-        TextField {
-            id: textField1
-            x: 366
-            y: 251
-            width: 277
-            height: 35
-            placeholderText: qsTr("Text Field")
-        }
-
-        TextField {
-            id: textField2
-            x: 682
-            y: 251
-            width: 277
-            height: 35
-            placeholderText: qsTr("Text Field")
-        }
-
-        TextField {
-            id: textField3
+        Label {
+            id: externalDevices
             x: 50
-            y: 342
-            width: 277
-            height: 35
-            placeholderText: qsTr("Text Field")
+            y: 280
+            color: "#ffffff"
+            text: qsTr("Data Log")
+            font.pointSize: 12
         }
 
-        TextField {
-            id: textField4
-            x: 366
-            y: 342
-            width: 277
-            height: 35
-            placeholderText: qsTr("Text Field")
+        Rectangle {
+            id: rectangle1
+            x: 50
+            y: 310
+            width: 700
+            height: 36
+            color: "#d3d3d3"
+            radius: 8
+            ComboBox {
+                id: dataLogFileName
+                anchors.fill: parent
+                currentIndex: -1
+                flat: true
+                displayText: currentIndex === -1 ? "Please select the data log file" : currentText
+                model: logsHandler.dataLogFileNames()
+                onCurrentIndexChanged: {
+                    logsHandler.onDataLogFileNameComboChanged(
+                                model[currentIndex])
+                }
+            }
+            clip: false
         }
 
         RoundButton {
@@ -2144,8 +2251,9 @@ Rectangle {
 
 /*##^##
 Designer {
-    D{i:0}D{i:61;invisible:true}D{i:76;invisible:true}D{i:104;invisible:true}D{i:120;invisible:true}
-D{i:150;invisible:true}
+    D{i:0}D{i:7;invisible:true}D{i:61;invisible:true}D{i:67;invisible:true}D{i:76;invisible:true}
+D{i:82;invisible:true}D{i:104;invisible:true}D{i:110;invisible:true}D{i:120;invisible:true}
+D{i:126;invisible:true}D{i:150;invisible:true}D{i:156;invisible:true}
 }
 ##^##*/
 
